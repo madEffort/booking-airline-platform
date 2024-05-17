@@ -1,0 +1,102 @@
+.
+├── api
+│   ├── auths
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-310.pyc
+│   │   │   ├── admin.cpython-310.pyc
+│   │   │   ├── apps.cpython-310.pyc
+│   │   │   └── models.cpython-310.pyc
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── migrations
+│   │   │   ├── __init__.py
+│   │   │   └── __pycache__
+│   │   │       └── __init__.cpython-310.pyc
+│   │   ├── models.py
+│   │   ├── tests.py
+│   │   └── views.py
+│   ├── flights
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-310.pyc
+│   │   │   ├── admin.cpython-310.pyc
+│   │   │   ├── apps.cpython-310.pyc
+│   │   │   └── models.cpython-310.pyc
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── migrations
+│   │   │   ├── __init__.py
+│   │   │   └── __pycache__
+│   │   │       └── __init__.cpython-310.pyc
+│   │   ├── models.py
+│   │   ├── tests.py
+│   │   └── views.py
+│   ├── lookup
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-310.pyc
+│   │   │   ├── admin.cpython-310.pyc
+│   │   │   ├── apps.cpython-310.pyc
+│   │   │   └── models.cpython-310.pyc
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── migrations
+│   │   │   ├── __init__.py
+│   │   │   └── __pycache__
+│   │   │       └── __init__.cpython-310.pyc
+│   │   ├── models.py
+│   │   ├── tests.py
+│   │   └── views.py
+│   ├── tickets
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-310.pyc
+│   │   │   ├── admin.cpython-310.pyc
+│   │   │   ├── apps.cpython-310.pyc
+│   │   │   └── models.cpython-310.pyc
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── migrations
+│   │   │   ├── __init__.py
+│   │   │   └── __pycache__
+│   │   │       └── __init__.cpython-310.pyc
+│   │   ├── models.py
+│   │   ├── tests.py
+│   │   └── views.py
+│   └── users
+│       ├── __init__.py
+│       ├── __pycache__
+│       │   ├── __init__.cpython-310.pyc
+│       │   ├── admin.cpython-310.pyc
+│       │   ├── apps.cpython-310.pyc
+│       │   ├── models.cpython-310.pyc
+│       │   ├── serializers.cpython-310.pyc
+│       │   ├── urls.cpython-310.pyc
+│       │   └── views.cpython-310.pyc
+│       ├── admin.py
+│       ├── apps.py
+│       ├── migrations
+│       │   ├── __init__.py
+│       │   └── __pycache__
+│       │       └── __init__.cpython-310.pyc
+│       ├── models.py
+│       ├── serializers.py
+│       ├── tests.py
+│       ├── urls.py
+│       └── views.py
+├── config
+│   ├── __init__.py
+│   ├── __pycache__
+│   │   ├── __init__.cpython-310.pyc
+│   │   ├── settings.cpython-310.pyc
+│   │   └── urls.cpython-310.pyc
+│   ├── asgi.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+├── db.sqlite3
+├── manage.py
+└── test.txt
+
+24 directories, 76 files
