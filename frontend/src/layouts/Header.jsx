@@ -278,7 +278,7 @@ const Header = () => {
         {authState.isAuthenticated ? (
           <ProfileSection>
             <Button variant='text' color='inherit' onClick={handleLogout}>
-              Logout
+              로그아웃
             </Button>
             <Link to='/profile'>
               <Avatar src='avatar.png' />

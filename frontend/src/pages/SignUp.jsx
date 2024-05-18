@@ -27,8 +27,8 @@ function Copyright(props) {
       {...props}
     >
       {'Copyright © '}
-      <Link color='inherit' href='https://mui.com/'>
-        Your Website
+      <Link color='inherit' href='https://github.com/madEffort'>
+        madEffort
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -54,13 +54,13 @@ export default function SignUp() {
 
     try {
       await axiosInstance.post('/signup/', user);
-      toast.success('Sign up successful! Redirecting to login page...');
+      toast.success('회원가입이 완료되었습니다! 로그인 페이지로 이동합니다!');
       setTimeout(() => {
         navigate('/login');
       }, 2000);
     } catch (error) {
-      toast.error('Error signing up. Please try again.');
-      console.error('Error signing up:', error);
+      toast.error('오류가 발생하였습니다. 다시 시도해주세요.');
+      console.error('오류가 발생하였습니다:', error);
     }
   };
 
@@ -80,7 +80,7 @@ export default function SignUp() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component='h1' variant='h5'>
-            Sign up
+            회원가입
           </Typography>
           <Box
             component='form'
@@ -96,7 +96,7 @@ export default function SignUp() {
                   required
                   fullWidth
                   id='firstName'
-                  label='First Name'
+                  label='이름'
                   autoFocus
                 />
               </Grid>
@@ -105,7 +105,7 @@ export default function SignUp() {
                   required
                   fullWidth
                   id='lastName'
-                  label='Last Name'
+                  label='성'
                   name='lastName'
                   autoComplete='family-name'
                 />
@@ -115,7 +115,7 @@ export default function SignUp() {
                   required
                   fullWidth
                   id='email'
-                  label='Email Address'
+                  label='이메일'
                   name='email'
                   autoComplete='email'
                 />
@@ -125,7 +125,7 @@ export default function SignUp() {
                   required
                   fullWidth
                   name='password'
-                  label='Password'
+                  label='패스워드'
                   type='password'
                   id='password'
                   autoComplete='new-password'
@@ -136,7 +136,7 @@ export default function SignUp() {
                   control={
                     <Checkbox value='allowExtraEmails' color='primary' />
                   }
-                  label='I want to receive inspiration, marketing promotions and updates via email.'
+                  label='E-mail 수신 동의(선택)'
                 />
               </Grid>
             </Grid>
@@ -146,12 +146,12 @@ export default function SignUp() {
               variant='contained'
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign Up
+              회원가입
             </Button>
             <Grid container justifyContent='flex-end'>
               <Grid item>
                 <Link href='/login' variant='body2'>
-                  Already have an account? Sign in
+                  로그인 바로가기
                 </Link>
               </Grid>
             </Grid>

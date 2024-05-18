@@ -1,6 +1,5 @@
 from rest_framework import generics, status
 from rest_framework.response import Response
-from rest_framework.permissions import AllowAny
 from rest_framework.pagination import PageNumberPagination
 from .serializers import FlightSerializer
 from .models import Flight
@@ -22,30 +21,38 @@ class FlightListView(generics.GenericAPIView):
     queryset = Flight.objects.all()
     serializer_class = FlightSerializer
     pagination_class = FlightListPagination
-    permission_classes = [AllowAny]
     
     def get(self, request, format=None):
-        queryset = self.filter_queryset_by_params(self.get_queryset(), request.query_params)
+        queryset = self.filter_queryset(self.get_queryset())
+
+        departures = request.query_params.get('departures')
+        arrivals = request.query_params.get('arrivals')
+        departure_date = request.query_params.get('departure_date')
+        arrival_date = request.query_params.get('arrival_date')
+        flight_class = request.query_params.get('flightClass')
+        airline = request.query_params.get('airline')
+        
+        filter_applied = False
+        
+        if departures and arrivals:
+            queryset = queryset.filter(departures__name=departures, arrivals__name=arrivals)
+            filter_applied = True
+        if departure_date and arrival_date:
+            queryset = queryset.filter(departure_date=departure_date, arrival_date=arrival_date)
+            filter_applied = True
+        if flight_class:
+            queryset = queryset.filter(flight_class__name=flight_class)
+            filter_applied = True
+        if airline:
+            queryset = queryset.filter(airline__name=airline)
+            filter_applied = True
+
         page = self.paginate_queryset(queryset)
         if page is not None:
             serializer = self.get_serializer(page, many=True)
+            if filter_applied and not serializer.data:
+                return Response({'flights':[]}, status=status.HTTP_200_OK)
             return self.get_paginated_response(serializer.data)
-        
+
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
-
-    def filter_queryset_by_params(self, queryset, params):
-        filters = {
-            'departures__name': params.get('departures'),
-            'arrivals__name': params.get('arrivals'),
-            'departure_date': params.get('departure_date'),
-            'arrival_date': params.get('arrival_date'),
-            'flight_class__name': params.get('flightClass'),
-            'airline__name': params.get('airline')
-        }
-        
-        # 필터 조건에서 None 값을 제거
-        filters = {key: value for key, value in filters.items() if value is not None}
-        
-        return queryset.filter(**filters) if filters else queryset
-

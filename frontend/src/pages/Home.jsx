@@ -121,16 +121,16 @@ const Pagination = ({
   return (
     <PaginationContainer>
       <PaginationButton onClick={handlePrevious} disabled={currentPage === 1}>
-        Previous
+        이전
       </PaginationButton>
       <span style={{ color: 'black' }}>
-        {currentPage} of {totalPages}
+        {currentPage} / {totalPages}
       </span>
       <PaginationButton
         onClick={handleNext}
         disabled={currentPage === totalPages}
       >
-        Next
+        다음
       </PaginationButton>
     </PaginationContainer>
   );

@@ -29,8 +29,8 @@ function Copyright(props) {
       {...props}
     >
       {'Copyright © '}
-      <Link color='inherit' href='https://mui.com/'>
-        Your Website
+      <Link color='inherit' href='https://github.com/madEffort'>
+        madEffort
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -101,7 +101,7 @@ export default function Login() {
               <LockOutlinedIcon />
             </Avatar>
             <Typography component='h1' variant='h5'>
-              Sign in
+              로그인
             </Typography>
             <Box
               component='form'
@@ -114,7 +114,7 @@ export default function Login() {
                 required
                 fullWidth
                 id='email'
-                label='Email Address'
+                label='이메일'
                 name='email'
                 autoComplete='email'
                 autoFocus
@@ -124,7 +124,7 @@ export default function Login() {
                 required
                 fullWidth
                 name='password'
-                label='Password'
+                label='패스워드'
                 type='password'
                 id='password'
                 autoComplete='current-password'
@@ -139,17 +139,17 @@ export default function Login() {
                 variant='contained'
                 sx={{ mt: 3, mb: 2 }}
               >
-                Sign In
+                로그인
               </Button>
               <Grid container>
                 <Grid item xs>
                   <Link href='#' variant='body2'>
-                    Forgot password?
+                    비밀번호 찾기
                   </Link>
                 </Grid>
                 <Grid item>
                   <Link href='/signup/' variant='body2'>
-                    {"Don't have an account? Sign Up"}
+                    {"회원가입 바로가기"}
                   </Link>
                 </Grid>
               </Grid>
