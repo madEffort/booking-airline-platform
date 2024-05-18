@@ -101,7 +101,7 @@ const Ticket = forwardRef((props, ref) => {
     destination,
     destination_airport,
     departure_date,
-    arrival_date,
+    destination_date,
     departure_time,
     arrival_time,
     duration,
@@ -126,7 +126,12 @@ const Ticket = forwardRef((props, ref) => {
     handleCloseModal();
   };
 
+  const formatPrice = (price) => {
+    return new Intl.NumberFormat('ko-KR').format(price);
+  };
+
   const isRefundable = dayjs(departure_date).isAfter(dayjs());
+
 
   return (
     <TicketContainer ref={ref}>
@@ -137,7 +142,7 @@ const Ticket = forwardRef((props, ref) => {
         </div>
         <div>
           <Typography variant='h5'>{arrival_time}</Typography>
-          <Typography variant='body2'>{arrival_date}</Typography>
+          <Typography variant='body2'>{destination_date}</Typography>
         </div>
       </Header>
       <Details>
@@ -199,7 +204,7 @@ const Ticket = forwardRef((props, ref) => {
       </Details>
 
       <PriceSection>
-        <Typography variant='h6'>USD {price}</Typography>
+        <Typography variant='h6'>KRW {formatPrice(price)}원</Typography>
         {isRefundable && (
           <>
             <Button

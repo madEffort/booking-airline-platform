@@ -48,7 +48,7 @@ export const FlightInfoProvider = ({ children }) => {
   const fetchUserTickets = useCallback(
     async (page = 1) => {
       try {
-        const response = await axiosInstance.get(`/tickets?page=${page}/`, {
+        const response = await axiosInstance.get(`/tickets/?page=${page}`, {
           headers: {
             Authorization: `Bearer ${authState.token}`,
           },

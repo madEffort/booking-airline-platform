@@ -28,11 +28,12 @@ class FlightSerializer(serializers.ModelSerializer):
     flightClass = serializers.StringRelatedField(source='flight_class')
     
     duration = serializers.SerializerMethodField()
-    
+    gate = serializers.StringRelatedField()
+
     class Meta:
         model = Flight
         fields = ['id', 'departure', 'departure_airport', 'departure_airport_code', 'destination', 'destination_airport',
-                'destination_airport_code', 'departure_date', 'destination_date', 'departure_time', 'arrival_time', 'duration', 'airline', 'flightClass', 'price']
+                'destination_airport_code', 'departure_date', 'destination_date', 'departure_time', 'arrival_time', 'duration', 'airline', 'flightClass', 'price', 'gate']
 
     def get_duration(self, obj):
         if obj.departure_time and obj.arrival_time:

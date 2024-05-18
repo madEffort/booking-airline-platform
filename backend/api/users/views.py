@@ -9,12 +9,11 @@ from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
-
 class SignUpView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = [AllowAny]
-
+    
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         if serializer.is_valid():
@@ -26,32 +25,38 @@ class SignUpView(generics.CreateAPIView):
 
 class LoginView(views.APIView):
     permission_classes = [AllowAny]
-
+    
     def post(self, request):
         serializer = LoginSerializer(data=request.data)
         if serializer.is_valid():
             user = serializer.validated_data
             refresh = RefreshToken.for_user(user)
             tickets_serializer = TicketSerializer(user.ticket_set.all(), many=True)
-            return Response(
-                {
-                    "message": "로그인 성공",
-                    "token": str(refresh.access_token),
-                    "user": {
-                        "id": user.id,
-                        "firstName": user.first_name,
-                        "lastName": user.last_name,
-                        "email": user.email,
-                        "password": user.password,
-                        "tickets": tickets_serializer.data,
-                    },
+            return Response({
+                "message": "로그인 성공",
+                "token": str(refresh.access_token),
+                "user": {
+                    "id": user.id,
+                    "firstName": user.first_name,
+                    "lastName": user.last_name,
+                    "email": user.email,
+                    "tickets": tickets_serializer.data
                 }
-            )
+            })
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
+    
 
 class UserDeleteView(generics.DestroyAPIView):
     queryset = User.objects.all()
     permission_classes = [IsAuthenticated]
     authentication_classes = [JWTAuthentication]
+    serializer_class = UserSerializer
+    
+    def delete(self, request, *args, **kwargs):
+        user = self.get_object()
+        if request.user == user or request.user.is_superuser:
+            super().delete(request, *args, **kwargs)
+            return Response({'message':'User deleted successfully'}, status=status.HTTP_200_OK)
+        else:
+            return Response({'error': 'You do not have permission to delete this user.'}, status=status.HTTP_403_FORBIDDEN)

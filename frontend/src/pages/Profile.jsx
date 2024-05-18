@@ -14,34 +14,30 @@ import ConfirmDeleteModal from '../components/ConfirmDeleteModal';
 
 const Profile = () => {
   const { authState, logout } = useContext(AuthContext);
-  const {
-    fetchUserTickets,
-    tickets,
-    setCurrentPage,
-    setTickets,
-  } = useContext(FlightInfoContext);
+  const { fetchUserTickets, tickets, setCurrentPage, setTickets } =
+    useContext(FlightInfoContext);
   const navigate = useNavigate();
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
   useEffect(() => {
     if (!authState.isAuthenticated) {
-      navigate('/'); // Redirect to the main page if not authenticated
+      navigate('/');
     } else {
-      fetchUserTickets(1); // Fetch user's tickets for the first page
+      fetchUserTickets(1);
     }
   }, [authState.isAuthenticated, fetchUserTickets, navigate]);
 
   const handleRefund = async (ticketId) => {
     try {
-      await axiosInstance.post(`/tickets/${ticketId}/refund/`, null, {
+      await axiosInstance.delete(`/tickets/${ticketId}/refund/`, null, {
         headers: {
           Authorization: `Bearer ${authState.token}`,
         },
       });
       toast.success('티켓이 환불되었습니다.');
       setCurrentPage(1);
-      setTickets([]); // Reset tickets to avoid duplicate entries
-      await fetchUserTickets(1); // Fetch tickets again after refund
+      setTickets([]);
+      await fetchUserTickets(1);
     } catch (error) {
       toast.error('티켓 환불에 실패했습니다.');
       console.error('Failed to refund ticket', error);

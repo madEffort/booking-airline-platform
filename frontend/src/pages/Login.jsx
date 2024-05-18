@@ -40,7 +40,7 @@ function Copyright(props) {
 
 const defaultTheme = createTheme();
 
-export default function Lo() {
+export default function Login() {
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -51,16 +51,13 @@ export default function Lo() {
       email: data.get('email'),
       password: data.get('password'),
     };
-    console.log(credentials);
 
     try {
       const response = await axiosInstance.post('/login/', credentials);
       const { token, user } = response.data;
-
-    
       login(user, token);
       toast.success('로그인 성공!');
-      navigate('/'); 
+      navigate('/');
     } catch (error) {
       toast.error(
         '로그인 실패: ' + error.response?.data?.message ||
@@ -151,7 +148,7 @@ export default function Lo() {
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Link href='/signup' variant='body2'>
+                  <Link href='/signup/' variant='body2'>
                     {"Don't have an account? Sign Up"}
                   </Link>
                 </Grid>

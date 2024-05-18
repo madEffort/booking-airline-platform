@@ -17,15 +17,16 @@ export const AuthProvider = ({ children }) => {
     if (token && user) {
       setAuthState({
         isAuthenticated: true,
-        user: JSON.parse(user),
+        user: user, 
         token: token,
       });
     }
   }, []);
 
   const login = (userData, token) => {
+    console.log(userData);
     localStorage.setItem('token', token);
-    localStorage.setItem('user', JSON.stringify(userData));
+    localStorage.setItem('user', userData);
     setAuthState({
       isAuthenticated: true,
       user: userData,

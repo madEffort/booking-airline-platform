@@ -101,6 +101,10 @@ const BookButton = styled.button`
   }
 `;
 
+const formatPrice = (price) => {
+  return new Intl.NumberFormat('ko-KR').format(price);
+};
+
 const SideBar = ({ flight }) => {
   const { purchaseTicket } = useContext(FlightInfoContext); 
   const { authState } = useContext(AuthContext); 
@@ -126,7 +130,7 @@ const SideBar = ({ flight }) => {
   if (!flight) {
     return (
       <Container>
-        <Title>아무것도 선택되지 않았습니다</Title>
+        <Title>항공권을 선택해 주세요.</Title>
       </Container>
     );
   }
@@ -134,7 +138,7 @@ const SideBar = ({ flight }) => {
   return (
     <Container>
       <Header />
-      <Title>Details Flight</Title>
+      <Title>상세 정보</Title>
       <Details>
         <DetailRow>
           <Label>Departure:</Label>
@@ -161,14 +165,14 @@ const SideBar = ({ flight }) => {
           <Value>{flight.gate}</Value>
         </DetailRow>
         <DetailRow>
-          <Label>Seats Available:</Label>
-          <Value>{flight.seatsAvailable}</Value>
+          <Label>Airline:</Label>
+          <Value>{flight.airline}</Value>
         </DetailRow>
       </Details>
       <Facilities>
         <Facility>
-          <FacilityIcon>🛡️</FacilityIcon>
-          <FacilityLabel>Free Protection</FacilityLabel>
+          <FacilityIcon>🛜</FacilityIcon>
+          <FacilityLabel>무료 와이파이</FacilityLabel>
         </Facility>
         <Facility>
           <FacilityIcon>🧳</FacilityIcon>
@@ -176,14 +180,14 @@ const SideBar = ({ flight }) => {
         </Facility>
         <Facility>
           <FacilityIcon>🍽️</FacilityIcon>
-          <FacilityLabel>Food</FacilityLabel>
+          <FacilityLabel>기내식 제공</FacilityLabel>
         </Facility>
         <Facility>
           <FacilityIcon>🎥</FacilityIcon>
-          <FacilityLabel>Entertainment</FacilityLabel>
+          <FacilityLabel>엔터테인먼트 서비스</FacilityLabel>
         </Facility>
       </Facilities>
-      <BookButton onClick={handleOpenModal}>Book for $167</BookButton>
+      <BookButton onClick={handleOpenModal}>최저가 {formatPrice(flight.price)}원 예약하기</BookButton>
       <ConfirmPurchaseModal
         open={isModalOpen}
         handleClose={handleCloseModal}

@@ -55,6 +55,7 @@ class Flight(models.Model):
     flight_class = models.ForeignKey(FlightClass, models.CASCADE)
 
     price = models.PositiveIntegerField(default=0)
+    gate = models.CharField(max_length=1)
     
     def save(self, *args, **kwargs):
         if self.departure_time:
