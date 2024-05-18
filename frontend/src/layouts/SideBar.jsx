@@ -20,7 +20,7 @@ const Container = styled.div`
 const Header = styled.div`
   width: 100%;
   height: 200px;
-  background-image: url('https://via.placeholder.com/400x200');
+  background-image: url('https://loremflickr.com/500/200/landmark/');
   background-size: cover;
   background-position: center;
   border-radius: 10px;

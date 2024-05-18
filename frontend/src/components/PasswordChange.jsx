@@ -17,7 +17,7 @@ const PasswordChange = () => {
     }
 
     try {
-      await axiosInstance.post('/change-password', {
+      await axiosInstance.post('/change-password/', {
         oldPassword,
         newPassword,
       });

@@ -53,8 +53,8 @@ export default function SignUp() {
     };
 
     try {
-      const response = await axiosInstance.post('/signup', user); 
-      login(response.data);
+      await axiosInstance.post('/signup/', user);
+      
       toast.success('Sign up successful! Redirecting to login page...');
       setTimeout(() => {
         navigate('/login');

@@ -54,10 +54,10 @@ export default function Lo() {
     console.log(credentials);
 
     try {
-      const response = await axiosInstance.post('/login', credentials);
+      const response = await axiosInstance.post('/login/', credentials);
       const { token, user } = response.data;
 
-     
+    
       login(user, token);
       toast.success('로그인 성공!');
       navigate('/'); 

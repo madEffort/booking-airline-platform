@@ -22,12 +22,12 @@ export const FlightInfoProvider = ({ children }) => {
   const isSubmittingRef = useRef(false);
 
   const fetchFlights = useCallback(
-    async (page = 1, limit = 6, params = {}) => {
+    async (page = 1, limit = 5, params = {}) => {
       try {
-        const response = await axiosInstance.get('/flights', {
-          headers: {
-            Authorization: `Bearer ${authState.token}`,
-          },
+        const response = await axiosInstance.get('/flights/', {
+          // headers: {
+          //   Authorization: `Bearer ${authState.token}`,
+          // },
           params: {
             page,
             limit,
@@ -48,7 +48,7 @@ export const FlightInfoProvider = ({ children }) => {
   const fetchUserTickets = useCallback(
     async (page = 1) => {
       try {
-        const response = await axiosInstance.get(`/tickets?page=${page}`, {
+        const response = await axiosInstance.get(`/tickets?page=${page}/`, {
           headers: {
             Authorization: `Bearer ${authState.token}`,
           },
@@ -88,7 +88,7 @@ export const FlightInfoProvider = ({ children }) => {
           `purchaseTicket called with flightId: ${flightId}, userId: ${userId}`
         );
         const response = await axiosInstance.post(
-          `/purchase/${flightId}`,
+          `/purchase/${flightId}/`,
           { flightId, userId },
           {
             headers: {

@@ -26,11 +26,11 @@ const Home = () => {
   useEffect(() => {
     const params = queryString.parse(location.search);
     setSearchParams(params);
-    fetchFlights(1, 6, params); 
+    fetchFlights(1, 5, params); 
   }, [location.search, setSearchParams, fetchFlights]);
 
   useEffect(() => {
-    fetchFlights(currentPage, 6, searchParams);
+    fetchFlights(currentPage, 5, searchParams);
   }, [currentPage, searchParams, fetchFlights]);
 
   const handlePrevious = () => {

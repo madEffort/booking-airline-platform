@@ -33,7 +33,7 @@ const Profile = () => {
 
   const handleRefund = async (ticketId) => {
     try {
-      await axiosInstance.post(`/tickets/${ticketId}/refund`, null, {
+      await axiosInstance.post(`/tickets/${ticketId}/refund/`, null, {
         headers: {
           Authorization: `Bearer ${authState.token}`,
         },
@@ -52,7 +52,7 @@ const Profile = () => {
 
   const handleDeleteAccount = async () => {
     try {
-      const response = await axiosInstance.delete(`/delete/${uid}`, {
+      const response = await axiosInstance.delete(`/delete/${uid}/`, {
         headers: {
           Authorization: `Bearer ${authState.token}`,
         },
