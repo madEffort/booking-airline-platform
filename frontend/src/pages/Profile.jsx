@@ -44,7 +44,7 @@ const Profile = () => {
     }
   };
 
-  const uid = authState.user.id;
+  const uid = authState.user;
 
   const handleDeleteAccount = async () => {
     try {
