@@ -44,7 +44,7 @@ const Profile = () => {
     }
   };
 
-  const uid = authState.user;
+  const uid = authState.user.id;
 
   const handleDeleteAccount = async () => {
     try {
@@ -53,11 +53,13 @@ const Profile = () => {
           Authorization: `Bearer ${authState.token}`,
         },
       });
-
-      if (response.status === 200) {
+      
+      if (response.status === 204) {
         toast.success('회원탈퇴가 완료되었습니다.');
-        logout();
-        navigate('/');
+        setTimeout(() => {
+          logout();
+          navigate('/');
+        }, 1000);
       }
     } catch (error) {
       toast.error('회원탈퇴 중 오류가 발생했습니다.');

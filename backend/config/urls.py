@@ -39,6 +39,7 @@ urlpatterns = [
     # apis
     path('', include("api.auths.urls")),
     path('', include("api.users.urls")),
+    path('', include("api.lookup.urls")),
     path('', include("api.flights.urls")),
     path('', include("api.tickets.urls")),
 ]

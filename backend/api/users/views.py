@@ -56,7 +56,7 @@ class UserDeleteView(generics.DestroyAPIView):
     def delete(self, request, *args, **kwargs):
         user = self.get_object()
         if request.user == user or request.user.is_superuser:
-            super().delete(request, *args, **kwargs)
-            return Response({'message':'User deleted successfully'}, status=status.HTTP_200_OK)
+            self.perform_destroy(user)
+            return Response({'message':'User deleted successfully'}, status=status.HTTP_204_NO_CONTENT)
         else:
             return Response({'error': 'You do not have permission to delete this user.'}, status=status.HTTP_403_FORBIDDEN)

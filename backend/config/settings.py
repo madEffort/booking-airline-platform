@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'api.users',
     'api.tickets',
     'api.flights',
+    'api.lookup',
     'api.auths',
 ]
 
