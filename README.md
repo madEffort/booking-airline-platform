@@ -66,7 +66,7 @@
 1. Get Flights
    - Endpoint: `GET /flights`
    - Description: Fetches a list of available flights.
-   - Parameters: Filter options such as `departures`, `arrivals`, `departure_date`, `arrival_date`, `flightClass`, `airline`, and pagination (`page`,` limit`).
+   - Parameters: Filter options such as `departures`, `arrivals`, `departure_date`, `arrival_date`, `flightClass`, `airline`, and pagination (`page`, `limit`).
    - Response: List of flights matching the criteria.
 2. Get User Tickets by Email
    - Endpoint: `GET /users/email/{email_address}/tickets`
