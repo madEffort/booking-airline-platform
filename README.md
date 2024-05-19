@@ -126,7 +126,7 @@ $ npm run dev
 
 ## Download
 
-You can [download](https://github.com/madEffort/booking-airline-platform/releases) the latest release version of the AirReserve.
+You can [download](https://github.com/madEffort/booking-airline-platform/releases) the latest release version of the BookingAir.
 
 ## Credits
 
