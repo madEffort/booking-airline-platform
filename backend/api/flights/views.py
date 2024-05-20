@@ -1,21 +1,8 @@
 from rest_framework import generics, status
 from rest_framework.response import Response
-from rest_framework.pagination import PageNumberPagination
+from .pagination import FlightListPagination
 from .serializers import FlightSerializer
 from .models import Flight
-
-
-class FlightListPagination(PageNumberPagination):
-    page_size = 5
-    page_size_query_param = 'limit'
-    
-    def get_paginated_response(self, data):
-        return Response({
-            'totalItems': self.page.paginator.count,
-            'totalPages': self.page.paginator.num_pages,
-            'currentPage': self.page.number,
-            'flights': data
-        })
 
 class FlightListView(generics.GenericAPIView):
     queryset = Flight.objects.all()
