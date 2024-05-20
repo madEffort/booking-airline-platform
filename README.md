@@ -68,12 +68,6 @@
    - Description: Fetches a list of available flights.
    - Parameters: Filter options such as `departures`, `arrivals`, `departure_date`, `arrival_date`, `flightClass`, `airline`, and pagination (`page`, `limit`).
    - Response: List of flights matching the criteria.
-2. Get User Tickets by Email
-   - Endpoint: `GET /users/email/{email_address}/tickets`
-   - Description: Fetches tickets for a user based on their email.
-   - Authentication: Requires JWT token.
-   - Parameters: Email address and pagination options.
-   - Response: List of tickets for the specified email.
 
 **Password Management**
 1. Change Password
