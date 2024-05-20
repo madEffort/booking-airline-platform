@@ -113,7 +113,7 @@ $ python manage.py runserver
 
 > ### Frontend
 
-```bash
+```bash
 # Go into the repository
 $ cd frontend
 
